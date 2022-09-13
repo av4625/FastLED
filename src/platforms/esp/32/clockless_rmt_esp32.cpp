@@ -142,6 +142,8 @@ void ESP32RMTController::init(gpio_num_t pin)
         }
     }
 
+    (void)espErr;
+
     // -- Create a semaphore to block execution until all the controllers are done
     if (gTX_sem == NULL) {
         gTX_sem = xSemaphoreCreateBinary();
@@ -279,6 +281,8 @@ void IRAM_ATTR ESP32RMTController::startOnChannel(int channel)
         // -- Kick off the transmission
         tx_start();
     }
+
+    (void)espErr;
 }
 
 // -- Start RMT transmission
